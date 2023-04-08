@@ -1,0 +1,644 @@
+taskkill /f /im explorer.exe
+taskkill /f /im smartscreen.exe
+taskkill /f /im SecurityHealthSystray.exe
+taskkill /f /im SecurityHealthHost.exe
+taskkill /f /im SecurityHealthService.exe
+taskkill /f /im SecurityHealthHost.exe
+taskkill /f /im DWWIN.EXE
+taskkill /f /im CompatTelRunner.exe
+taskkill /f /im GameBarPresenceWriter.exe
+taskkill /f /im DeviceCensus.exe
+
+@echo off
+pushd "%CD%"
+CD /D "%~dp0" 
+taskkill /f /im smartscreen.exe
+ren "C:WindowsSystem32smartscreen.plm" "C:WindowsSystem32smartscreen.exe"
+
+pause
+
+
+:: Starting script
+@echo off
+pushd "%CD%"
+CD /D "%~dp0"
+
+:: Disable Defender's Scheduled Tasks
+schtasks /Change /TN "MicrosoftWindowsWindows DefenderWindows Defender Cache Maintenance" /Disable
+schtasks /Change /TN "MicrosoftWindowsWindows DefenderWindows Defender Cleanup" /Disable
+schtasks /Change /TN "MicrosoftWindowsWindows DefenderWindows Defender Scheduled Scan" /Disable
+schtasks /Change /TN "MicrosoftWindowsWindows DefenderWindows Defender Verification" /Disable
+
+
+:: Killing SmartScreen
+
+taskkill /f /im smartscreen.exe
+exit
+
+
+
+@Echo Off
+Title Reg Converter v1.2 & Color 1A
+cd %systemroot%system32
+call :IsAdmin
+
+:: ---------------------------------------------------  !!! Incorrect Data Found !!!  -------------------------------------------------------------
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows DefenderFeatures --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControlCIPolicy --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows NTCurrentVersionSvchostWebThreatDefense --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows DefenderWindows Defender Exploit GuardASR --> Windows Registry Editor Version 5.00
+:: HKEY_CURRENT_USERSoftwareMicrosoftWindows Security HealthState --> ÿşW i n d o w s   R e g i s t r y   E d i t o r   V e r s i o n   5 . 0 0
+:: HKEY_CURRENT_USERSoftwareMicrosoftWindows Security HealthState --> [ H K E Y _ L O C A L _ M A C H I N E  S Y S T E M  C u r r e n t C o n t r o l S e t  C o n t r o l  C I  P o l i c y ]
+:: HKEY_CURRENT_USERSoftwareMicrosoftWindows Security HealthState -->  V e r i f i e d A n d R e p u t a b l e P o l i c y S t a t e " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_CURRENT_USERSoftwareMicrosoftWindows Security HealthState --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREPoliciesMicrosoftWindows Defender Security CenterApp and Browser protection --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREPoliciesMicrosoftWindows DefenderSmartScreen --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable --> ÿşW i n d o w s   R e g i s t r y   E d i t o r   V e r s i o n   5 . 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable --> [ H K E Y _ L O C A L _ M A C H I N E  S O F T W A R E  P o l i c i e s  M i c r o s o f t  W i n d o w s  S y s t e m ]
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  R u n A s P P L " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable --> [ H K E Y _ L O C A L _ M A C H I N E  S Y S T E M  C u r r e n t C o n t r o l S e t  C o n t r o l  L s a ]
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  N o L m H a s h " = d w o r d : 0 0 0 0 0 0 0 1
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  r e s t r i c t a n o n y m o u s " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  e v e r y o n e i n c l u d e s a n o n y m o u s " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  r e s t r i c t a n o n y m o u s s a m " = d w o r d : 0 0 0 0 0 0 0 1
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  R e s t r i c t R e c e i v i n g N T L M T r a f f i c " = d w o r d : 0 0 0 0 0 0 0 2
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  R e s t r i c t S e n d i n g N T L M T r a f f i c " = d w o r d : 0 0 0 0 0 0 0 2
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  L m C o m p a t i b i l i t y L e v e l " = d w o r d : 0 0 0 0 0 0 0 2
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  S C E N o A p p l y L e g a c y A u d i t P o l i c y " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  T u r n O f f A n o n y m o u s B l o c k " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  L s a C o n f i g F l a g s " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  R u n A s P P L " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable -->  R u n A s P P L B o o t " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControl --> DisableRemoteScmEndpoints"dword:00000000
+:: HKEY_LOCAL_MACHINESYSTEMControlSet001Control --> DisableRemoteScmEndpoints"dword:00000000
+:: HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControl --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor --> ÿşW i n d o w s   R e g i s t r y   E d i t o r   V e r s i o n   5 . 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor --> [ H K E Y _ L O C A L _ M A C H I N E  S Y S T E M  C u r r e n t C o n t r o l S e t  C o n t r o l  C I  C o n f i g ]
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor -->  V u l n e r a b l e D r i v e r B l o c k l i s t E n a b l e " = d w o r d : 0 0 0 0 0 0 0 0
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREPoliciesMicrosoftWindows Defender Security CenterApp and Browser protection --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESYSTEMCurrentControlSetControlCIPolicy --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows DefenderFeatures --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows NTCurrentVersionSvchost --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREPoliciesMicrosoftWindows DefenderPolicy Manager --> Windows Registry Editor Version 5.00
+:: HKEY_CLASSES_ROOTLocal SettingsSoftwareMicrosoftWindowsCurrentVersionAppModelPackageRepositoryExtensionsProgIDsAppXb5yxv86nkhp530y0y50yxe69c1qwad1x --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesSharedAccessParametersFirewallPolicy
+estrictedServicesStaticSystem --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindowsCurrentVersion
+un --> Windows Registry Editor Version 5.00
+:: HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesSharedAccessParametersFirewallPolicy
+estrictedServicesConfigurableSystem --> Windows Registry Editor Version 5.00
+:: ------------------------------------------------------------------------------------------------------------------------------------------------
+
+REM ;Disable Windows Defender Services and Windows Security Center kind of thing
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesMsSecCore" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServiceswscsvc" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesWdNisDrv" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesWdNisSvc" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesWdFiltrer" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesWdBoot" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesSecurityHealthService" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesSgrmAgent" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesSgrmBroker" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesWinDefend" /v "Start" /t REG_DWORD /d "4" /f
+REM ; Disable Windows Defender WMI Logger
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlWMIAutologgerDefenderApiLogger" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlWMIAutologgerDefenderApiLogger" /v "Status" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlWMIAutologgerDefenderAuditLogger" /v "Start" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlWMIAutologgerDefenderAuditLogger" /v "Status" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlWMIAutologgerDefenderAuditLogger" /v "EnableSecurityProvider" /t REG_DWORD /d "0" /f
+REM ;Disable Windows Security Health Service Startup Entry
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindowsCurrentVersion
+un" /v "SecurityHealth" /f
+REM ; Disable Windows Defender Tamper Protection
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersion
+un" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "MpPlatformKillbitsFromEngine" /t REG_BINARY /d "0000000000000000" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "TamperProtectionSource" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "MpCapability" /t REG_BINARY /d "0000000000000000" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "TamperProtection" /t REG_DWORD /d "0" /f
+REM ; Remove Windows SmartScreen Assoc.
+Reg.exe delete "HKCUSoftwareClassesms-cxh" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowIOAVProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "PUAProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "DisableRoutinelyTakingAction" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "ServiceKeepAlive" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "AllowFastServiceStartup" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "DisableLocalAdminMerge" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "RandomizeScheduleTaskTimes" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowArchiveScanning" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowBehaviorMonitoring" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowCloudProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowEmailScanning" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowFullScanOnMappedNetworkDrives" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowFullScanRemovableDriveScanning" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowIntrusionPreventionSystem" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowOnAccessProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowRealtimeMonitoring" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowScanningNetworkFiles" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowScriptScanning" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowUserUIAccess" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAvgCPULoadFactor" /v "value" /t REG_DWORD /d "50" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderCheckForSignaturesBeforeRunningScan" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderCloudBlockLevel" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderCloudExtendedTimeout" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderDaysToRetainCleanedMalware" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderDisableCatchupFullScan" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderDisableCatchupQuickScan" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderEnableControlledFolderAccess" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderEnableLowCPUPriority" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderEnableNetworkProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderPUAProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefender
+ealTimeScanDirection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderScanParameter" /v "value" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderScheduleScanDay" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderScheduleScanTime" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderSignatureUpdateInterval" /v "value" /t REG_DWORD /d "24" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderSubmitSamplesConsent" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderExclusions" /v "DisableAutoExclusions" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "MpEnablePus" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "MpCloudBlockLevel" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "MpBafsExtendedTimeout" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "EnableFileHashComputation" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+ISConsumersIPS" /v "ThrottleDetectionEventsRate" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+ISConsumersIPS" /v "DisableSignatureRetirement" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+ISConsumersIPS" /v "DisableProtocolRecognition" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderPolicy Manager" /v "DisableScanningNetworkFiles" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableRealtimeMonitoring" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableBehaviorMonitoring" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableOnAccessProtection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableScanOnRealtimeEnable" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableIOAVProtection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableOnAccessProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideRealtimeScanDirection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableIOAVProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableBehaviorMonitoring" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableIntrusionPreventionSystem" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableRealtimeMonitoring" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "RealtimeScanDirection" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "IOAVMaxSize" /t REG_DWORD /d "1298" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableInformationProtectionControl" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableIntrusionPreventionSystem" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableRawWriteNotification" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "LowCpuPriority" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableRestorePoint" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableArchiveScanning" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableScanningNetworkFiles" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableCatchupFullScan" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableCatchupQuickScan" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableEmailScanning" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableHeuristics" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableReparsePointScanning" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "SignatureDisableNotification" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "RealtimeSignatureDelivery" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "ForceUpdateFromMU" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "DisableScheduledSignatureUpdateOnBattery" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "UpdateOnStartUp" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "SignatureUpdateCatchupInterval" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "DisableUpdateOnStartupWithoutEngine" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "ScheduleTime" /t REG_DWORD /d "5184" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "DisableScanOnUpdate" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "DisableBlockAtFirstSeen" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "LocalSettingOverrideSpynetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "SpynetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "SubmitSamplesConsent" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderUX Configuration" /v "SuppressRebootNotification" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit GuardControlled Folder Access" /v "EnableControlledFolderAccess" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit Guard
+etwork Protection" /v "EnableNetworkProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREWOW6432NodePoliciesMicrosoftWindows Defender" /v "DisableRoutinelyTakingAction" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "ServiceKeepAlive" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "AllowFastServiceStartup" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "DisableRoutinelyTakingAction" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "DisableAntiVirus" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft AntimalwareSpyNet" /v "SpyNetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft AntimalwareSpyNet" /v "LocalSettingOverrideSpyNetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "DisableEnhancedNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "DisableGenericRePorts" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "WppTracingLevel" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "WppTracingComponents" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlCIPolicy" /v "VerifiedAndReputablePolicyState" /t REG_DWORD /d "0" /f
+REM ; Anti phishing
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWebThreatDefenseAuditMode" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWebThreatDefense
+otifyUnsafeOrReusedPassword" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWebThreatDefenseServiceEnabled" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServiceswebthreatdefsvc" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServiceswebthreatdefusersvc" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows NTCurrentVersionSvchostWebThreatDefense" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit GuardControlled Folder Access" /v "EnableControlledFolderAccess" /t REG_DWORD /d "0" /f
+Reg.exe delete "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit Guard
+etwork Protection" /v "EnableNetworkProtection" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit Guard
+etwork Protection" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit GuardASR" /v "ExploitGuard_ASR_Rules" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterApp and Browser protection" /v "DisallowExploitProtectionOverride" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit Guard
+etwork Protection" /v "EnableNetworkProtection" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit Guard
+etwork Protection" /f
+Reg.exe add "HKLMSOFTWAREMicrosoft
+emovalToolsMpGears" /v "HeartbeatTrackingIndex" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoft
+emovalToolsMpGears" /v "SpyNetReportingLocation" /t REG_SZ /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderWindows Defender Exploit GuardASR" /v "EnableASRConsumers" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUSoftwareMicrosoftWindows Security HealthState" /v "Disabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthPlatform" /v "Registered" /t REG_DWORD /d "0" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security Health" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorBattery" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorBattery" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorDevice Driver" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorDevice Driver" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor
+eliability" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor
+eliability" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStatus Codes" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStatus Codes" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health Metrics" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health Metrics" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorTime Service" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorTime Service" /v "WarningThreshold" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor" /v "DiagnosticInterval" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor" /v "MaxDaysOnOSVersion" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesExplorer" /v "TurnOffSPIAnimations" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesExplorer" /v "NoWelcomeScreen" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesExplorer" /v "EnforceShellExtensionSecurity" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSecurityAntiTheftMode" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSecurityClearTPMIfNotReady" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSecurityPreventAutomaticDeviceEncryptionForAzureADJoinedDevices" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSecurity
+ecoveryEnvironmentAuthentication" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSecurity
+equireDeviceEncryption" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSecurity
+equireProvisioningPackageSignature" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSecurity
+equireRetrieveHealthCertificateOnBoot" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUSoftwareMicrosoftWindows Security HealthState" /v "Disabled" /t REG_DWORD /d "1" /f
+REM ;   C r e a t e d   b y :   S h a w n   B r i n k
+REM ;   C r e a t e d   o n :   A p r i l   8 ,   2 0 2 2
+REM ;   T u t o r i a l :   h t t p s : / / w w w . e l e v e n f o r u m . c o m / t / t u r n - o n - o r - o f f - s m a r t - a p p - c o n t r o l - i n - w i n d o w s - 1 1 . 4 9 9 6 /
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableAccountProtectionUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterDevice performance and health" /v "UILockdown" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterDevice security" /v "UILockdown" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterFirewall and network protection" /v "UILockdown" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableAccountProtectionUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableAppBrowserUI" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableClearTpmButton" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableDeviceSecurityUI" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableEnhancedNotifications" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableFamilyUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableHealthUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableNetworkUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableNotifications" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableTpmFirmwareUpdateWarning" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableVirusUI" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisallowExploitProtectionOverride" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterEnableCustomizedToasts" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterEnableInAppCustomization" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideRansomwareDataRecovery" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideSecureBoot" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideTPMTroubleshooting" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideWindowsSecurityNotificationAreaControl" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServiceswscsvc" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetServicesSecurityHealthService" /v "Start" /t REG_DWORD /d "4" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftSecurity Center" /v "FirewallDisableNotify" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftSecurity Center" /v "UpdatesDisableNotify" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security Center
+otifications" /v "DisableEnhancedNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security Center
+otifications" /v "DisableNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKCUSoftwareMicrosoftWindows Defender Security CenterAccount protection" /v "DisableNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterApp and Browser protection" /v "DisallowExploitProtectionOverride" /t REG_DWORD /d "1" /f
+REM ; SmartScreen
+Reg.exe add "HKCUSoftwareMicrosoftWindowsCurrentVersionAppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUSoftwareMicrosoftWindowsCurrentVersionAppHost" /v "PreventOverride" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultBrowserAllowSmartScreen" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSmartScreenEnableSmartScreenInShell" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSmartScreenEnableAppInstallControl" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUSOFTWAREClassesLocal SettingsSoftwareMicrosoftWindowsCurrentVersionAppContainerStoragemicrosoft.microsoftedge_8wekyb3d8bbweMicrosoftEdgePhishingFilter" /v "EnabledV9" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUSOFTWAREClassesLocal SettingsSoftwareMicrosoftWindowsCurrentVersionAppContainerStoragemicrosoft.microsoftedge_8wekyb3d8bbweMicrosoftEdgePhishingFilter" /v "PreventOverride" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultSmartScreenPreventOverrideForFilesInShell" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUSoftwareMicrosoftEdgeSmartScreenEnabled" /v "(Default)" /t REG_SZ /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSmartScreen" /v "ConfigureAppInstallControl" /t REG_SZ /d "Anywhere" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSmartScreen" /v "ConfigureAppInstallControlEnabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionExplorer" /v "SmartScreenEnabled" /t REG_SZ /d "off" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindowsSystem" /v "EnableSmartScreen" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUSoftwareMicrosoftEdgeSmartScreenEnabled" /ve /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSmartScreen" /v "ConfigureAppInstallControlEnabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSmartScreen" /v "ConfigureAppInstallControl" /t REG_SZ /d "Anywhere" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableLUA" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "ConsentPromptBehaviorUser" /t REG_DWORD /d "3" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableVirtualization" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "FilterAdministratorToken" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableUIADesktopToggle" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "ValidateAdminCodeSignatures" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableInstallerDetection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableSecureUIAPaths" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableUIADesktopToggle" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableInstallerDetection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "ValidateAdminCodeSignatures" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "DSCAutomationHostEnabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "EnableCursorSuppression" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "dontdisplaylastusername" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "shutdownwithoutlogon" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "undockwithoutlogon" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "PromptOnSecureDesktop" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "DelayedDesktopSwitchTimemout" /t REG_DWORD /d "0" /f
+Reg.exe delete "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDeviceGuard" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "DeployConfigCIPolicy" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "HVCIMATRequired" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "RequirePlatformSecurityFeature" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "CachedDrtmAuthIndex" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "LsaCfgFlags" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "RequireMicrosoftSignedBootChain" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "RequirePlatformSecurityFeatures" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "Locked" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "ConfigCIPolicyFilePath" /t REG_SZ /d "C:WindowsschemasCodeIntegrityExamplePoliciesAllowAll.xml" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "HypervisorEnforcedCodeIntegrity" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuard" /v "ConfigureSystemGuardLaunch" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuardScenariosCredentialGuard" /v "Enabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlDeviceGuardScenariosHypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDeviceGuardEnableVirtualizationBasedSecurity" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDeviceGuardConfigureSystemGuardLaunch" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDeviceGuardLsaCfgFlags" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDeviceGuard
+equirePlatformSecurityFeatures" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnologyHypervisorEnforcedCodeIntegrity" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultVirtualizationBasedTechnology
+equireUEFIMemoryAttributesTable" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersionPoliciesSystem" /v "VerboseStatus" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersion
+eliability" /v "ShutdownReasonOn" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindowsCurrentVersion
+eliability" /v "ShutdownReasonUI" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSoftwarePoliciesMicrosoftWindows NT
+eliability" /v "ShutdownReasonOn" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSoftwarePoliciesMicrosoftWindows NT
+eliability" /v "ShutdownReasonUI" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows NTCurrentVersionWindows" /v "ShutdownWarningDialogTimeout" /t REG_DWORD /d "1" /f
+Reg.exe add "HKCUControl PanelDesktop" /v "AutoEndTasks" /t REG_SZ /d "1" /f
+Reg.exe add "HKCUControl PanelDesktop" /v "MenuShowDelay" /t REG_SZ /d "0" /f
+Reg.exe delete "HKCUControl PanelDesktop" /v "ScreenSaveTimeOut" /f
+Reg.exe delete "HKCUControl PanelDesktop" /v "SCRNSAVE.EXE" /f
+Reg.exe add "HKCUControl PanelDesktop" /v "ForegroundLockTimeout" /t REG_DWORD /d "0" /f
+Reg.exe add "HKCUControl PanelDesktop" /v "WaitToKillAppTimeout" /t REG_SZ /d "1" /f
+Reg.exe add "HKCUControl PanelDesktop" /v "WaitToKillServiceTimeout" /t REG_DWORD /d "1" /f
+Reg.exe add "HKCUControl PanelDesktop" /v "HungAppTimeout" /t REG_SZ /d "1000" /f
+Reg.exe add "HKCUControl PanelDesktop" /v "LowLevelHooksTimeout" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControl" /v "WaitToKillServiceTimeout" /t REG_SZ /d "1" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControl" /v "HandlerTimeout" /t REG_DWORD /d "2147483647" /f
+Reg.exe add "HKLMSYSTEMControlSet001Control" /v "WaitToKillServiceTimeout" /t REG_SZ /d "1" /f
+Reg.exe add "HKLMSYSTEMControlSet001Control" /v "HandlerTimeout" /t REG_DWORD /d "2147483647" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlPnP" /v "PollBootPartitionTimeout" /t REG_DWORD /d "1" /f
+Reg.exe add "HKCUSoftwareMicrosoftWindowsCurrentVersionExplorerAdvanced" /v "ThumbnailLivePreviewHoverTime" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControl" /v "ServicesPipeTimeout" /t REG_DWORD /d "2359296" /f
+Reg.exe delete "HKCUSoftwareMicrosoftWindows Security Health" /f
+Reg.exe add "HKCUSoftwareMicrosoftWindows Security HealthState" /v "Disabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthPlatform" /v "Registered" /t REG_DWORD /d "0" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security Health" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorBattery" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorBattery" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorDevice Driver" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorDevice Driver" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor
+eliability" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth Advisor
+eliability" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStatus Codes" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStatus Codes" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health Metrics" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorStorage Health Metrics" /v "WarningThreshold" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorTime Service" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorTime Service" /v "WarningThreshold" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor" /v "DiagnosticInterval" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor" /v "MaxDaysOnOSVersion" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows Security HealthHealth AdvisorUpdate Monitor" /v "UIReportingDisabled" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableAccountProtectionUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterDevice performance and health" /v "UILockdown" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterDevice security" /v "UILockdown" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterFirewall and network protection" /v "UILockdown" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableAccountProtectionUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableAppBrowserUI" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableClearTpmButton" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableDeviceSecurityUI" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableEnhancedNotifications" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableFamilyUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableHealthUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableNetworkUI" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableNotifications" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableTpmFirmwareUpdateWarning" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisableVirusUI" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterDisallowExploitProtectionOverride" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterEnableCustomizedToasts" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterEnableInAppCustomization" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideRansomwareDataRecovery" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideSecureBoot" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideTPMTroubleshooting" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultWindowsDefenderSecurityCenterHideWindowsSecurityNotificationAreaControl" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe delete "HKLMSYSTEMCurrentControlSetServiceswscsvc" /f
+Reg.exe delete "HKLMSYSTEMCurrentControlSetServicesSecurityHealthService" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftSecurity Center" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftSecurity Center" /v "FirewallDisableNotify" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftSecurity Center" /v "UpdatesDisableNotify" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security Center
+otifications" /v "DisableEnhancedNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security Center
+otifications" /v "DisableNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKCUSoftwareMicrosoftWindows Defender Security CenterAccount protection" /v "DisableNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender Security CenterApp and Browser protection" /v "DisallowExploitProtectionOverride" /t REG_DWORD /d "1" /f
+REM ; Enforcing of Disabling of Windows Defender Antivirus Policy
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowIOAVProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "PUAProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "DisableRoutinelyTakingAction" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "ServiceKeepAlive" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "AllowFastServiceStartup" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "DisableLocalAdminMerge" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender" /v "RandomizeScheduleTaskTimes" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowArchiveScanning" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowBehaviorMonitoring" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowCloudProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowEmailScanning" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowFullScanOnMappedNetworkDrives" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowFullScanRemovableDriveScanning" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowIntrusionPreventionSystem" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowOnAccessProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowRealtimeMonitoring" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowScanningNetworkFiles" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowScriptScanning" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAllowUserUIAccess" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderAvgCPULoadFactor" /v "value" /t REG_DWORD /d "50" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderCheckForSignaturesBeforeRunningScan" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderCloudBlockLevel" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderCloudExtendedTimeout" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderDaysToRetainCleanedMalware" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderDisableCatchupFullScan" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderDisableCatchupQuickScan" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderEnableControlledFolderAccess" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderEnableLowCPUPriority" /v "value" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderEnableNetworkProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderPUAProtection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefender
+ealTimeScanDirection" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderScanParameter" /v "value" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderScheduleScanDay" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderScheduleScanTime" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderSignatureUpdateInterval" /v "value" /t REG_DWORD /d "24" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftPolicyManagerdefaultDefenderSubmitSamplesConsent" /v "value" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderExclusions" /v "DisableAutoExclusions" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "MpEnablePus" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "MpCloudBlockLevel" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "MpBafsExtendedTimeout" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderMpEngine" /v "EnableFileHashComputation" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+ISConsumersIPS" /v "ThrottleDetectionEventsRate" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+ISConsumersIPS" /v "DisableSignatureRetirement" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+ISConsumersIPS" /v "DisableProtocolRecognition" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderPolicy Manager" /v "DisableScanningNetworkFiles" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableRealtimeMonitoring" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableBehaviorMonitoring" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableOnAccessProtection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableScanOnRealtimeEnable" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableIOAVProtection" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableOnAccessProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideRealtimeScanDirection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableIOAVProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableBehaviorMonitoring" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableIntrusionPreventionSystem" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "LocalSettingOverrideDisableRealtimeMonitoring" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "RealtimeScanDirection" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "IOAVMaxSize" /t REG_DWORD /d "1298" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableInformationProtectionControl" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableIntrusionPreventionSystem" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eal-Time Protection" /v "DisableRawWriteNotification" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "LowCpuPriority" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableRestorePoint" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableArchiveScanning" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableScanningNetworkFiles" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableCatchupFullScan" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableCatchupQuickScan" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableEmailScanning" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableHeuristics" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderScan" /v "DisableReparsePointScanning" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "SignatureDisableNotification" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "RealtimeSignatureDelivery" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "ForceUpdateFromMU" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "DisableScheduledSignatureUpdateOnBattery" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "UpdateOnStartUp" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "SignatureUpdateCatchupInterval" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "DisableUpdateOnStartupWithoutEngine" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "ScheduleTime" /t REG_DWORD /d "5184" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSignature Updates" /v "DisableScanOnUpdate" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "DisableBlockAtFirstSeen" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "LocalSettingOverrideSpynetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "SpynetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderSpynet" /v "SubmitSamplesConsent" /t REG_DWORD /d "2" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderUX Configuration" /v "SuppressRebootNotification" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit GuardControlled Folder Access" /v "EnableControlledFolderAccess" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows DefenderWindows Defender Exploit Guard
+etwork Protection" /v "EnableNetworkProtection" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREWOW6432NodePoliciesMicrosoftWindows Defender" /v "DisableRoutinelyTakingAction" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "ServiceKeepAlive" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "AllowFastServiceStartup" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "DisableRoutinelyTakingAction" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft Antimalware" /v "DisableAntiVirus" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft AntimalwareSpyNet" /v "SpyNetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftMicrosoft AntimalwareSpyNet" /v "LocalSettingOverrideSpyNetReporting" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "DisableEnhancedNotifications" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "DisableGenericRePorts" /t REG_DWORD /d "1" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "WppTracingLevel" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREPoliciesMicrosoftWindows Defender
+eporting" /v "WppTracingComponents" /t REG_DWORD /d "0" /f
+Reg.exe add "HKLMSYSTEMCurrentControlSetControlCIPolicy" /v "VerifiedAndReputablePolicyState" /t REG_DWORD /d "0" /f
+REM ; Remove Defender's Tamper Protection
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "MpPlatformKillbitsFromEngine" /t REG_BINARY /d "0000000000000000" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "TamperProtectionSource" /t REG_nkkkkkDWORD /d "0" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "MpCapability" /t REG_BINARY /d "0000000000000000" /f
+Reg.exe add "HKLMSOFTWAREMicrosoftWindows DefenderFeatures" /v "TamperProtection" /t REG_DWORD /d "0" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindowsRuntimeServerWebThreatDefSvc" /f
+Reg.exe delete "HKLMSYSTEMCurrentControlSetServiceswebthreatdefsvc" /f
+Reg.exe delete "HKLMSYSTEMCurrentControlSetServiceswebthreatdefusersvc" /f
+Reg.exe delete "HKLMSOFTWAREMicrosoftWindows NTCurrentVersionSvchostWebThreatDe
+Ffkkkfkf
